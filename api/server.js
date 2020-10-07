@@ -10,6 +10,16 @@ server.use(express.json());
 //CRUD
 
 //Create
+server.post("/cars", (req, res) => {
+  dbFunctions
+    .insert(req.body)
+    .then((dbRes) => {
+      res.status(200).json(dbRes);
+    })
+    .catch((dbErr) => {
+      res.status(500).json(dbErr);
+    });
+});
 
 //Read
 server.get("/cars", (req, res) => {
